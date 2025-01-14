@@ -35,7 +35,7 @@ storageClass:
   # pool: <cephfs-data-pool>
   # For eg:
   # pool: "replicapool"
-  pool: "pool"
+  pool: "cephfs"
   # (optional) Comma separated string of Ceph-fuse mount options.
   # For eg:
   # fuseMountOptions: debug

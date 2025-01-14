@@ -1,0 +1,66 @@
+# Configuration for the CSI to connect to the cluster
+# Ref: https://github.com/ceph/ceph-csi/blob/devel/examples/README.md
+# Example:
+csiConfig:
+  - clusterID: "d0bd87c8-cdf3-11ef-8f28-d89ef382b425"
+    monitors:
+      - "192.168.1.200:6789"
+      - "192.168.1.201:6789"
+      - "192.168.1.202:6789"
+
+provisioner:
+  name: provisioner
+  replicaCount: 1
+  strategy:
+    # RollingUpdate strategy replaces old pods with new ones gradually,
+    # without incurring downtime.
+    type: RollingUpdate
+    rollingUpdate:
+      # maxUnavailable is the maximum number of pods that can be
+      # unavailable during the update process.
+      maxUnavailable: 50%
+  # if fstype is not specified in storageclass, ext4 is default
+  defaultFSType: ext4
+
+
+storageClass:
+  # Specifies whether the storageclass should be created
+  create: true
+  name: csi-rbd-sc
+
+
+  # (required) String representing a Ceph cluster to provision storage from.
+  # Should be unique across all Ceph clusters in use for provisioning,
+  # cannot be greater than 36 bytes in length, and should remain immutable for
+  # the lifetime of the StorageClass in use.
+  clusterID: d0bd87c8-cdf3-11ef-8f28-d89ef382b425
+
+  # (optional) If you want to use erasure coded pool with RBD, you need to
+  # create two pools. one erasure coded and one replicated.
+  # You need to specify the replicated pool here in the `pool` parameter, it is
+  # used for the metadata of the images.
+  # The erasure coded pool must be set as the `dataPool` parameter below.
+  # dataPool: <ec-data-pool>
+  dataPool: ""
+
+  # (required) Ceph pool into which the RBD image shall be created
+  # (optional) if topologyConstrainedPools is provided
+  # eg: pool: replicapool
+  pool: pool
+
+  # The secrets have to contain Ceph credentials with required access
+  # to the 'pool'.
+  provisionerSecret: ceph-admin
+  # If Namespaces are left empty, the secrets are assumed to be in the
+  # Release namespace.
+  provisionerSecretNamespace: ""
+  controllerExpandSecret: csi-rbd-secret
+  controllerExpandSecretNamespace: ""
+  nodeStageSecret: csi-rbd-secret
+  nodeStageSecretNamespace: ""
+  # Specify the filesystem type of the volume. If not specified,
+  # csi-provisioner will set default as `ext4`.
+  fstype: ext4
+  reclaimPolicy: Retain
+  allowVolumeExpansion: true
+  mountOptions: []

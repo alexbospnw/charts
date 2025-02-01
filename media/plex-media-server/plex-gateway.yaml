@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: media-gateway
+  namespace: media
+  annotations: 
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare 
+spec:
+  selector:
+    istio: ingressgateway # use istio default ingress gateway
+  servers:
+  - port:
+      number: 443
+      name: https-plex
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: plexcert
+    hosts:
+    - plex2.greaterfaydark.net

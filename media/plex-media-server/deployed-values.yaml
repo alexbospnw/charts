@@ -20,7 +20,7 @@ ingress:
   ingressClassName: "ingress-nginx"
 
   # -- The url to use for the ingress reverse proxy to point at this pms instance
-  url: ""
+  url: "plex2.greaterfaydark.net"
 
   # -- Optional secret name to provide valid https connections
   # using an existing SSL certificate

@@ -1,0 +1,65 @@
+image:
+  # -- image repository
+  repository: ghcr.io/onedr0p/sonarr
+  # @default -- chart.appVersion
+  tag:
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+
+# -- environment variables.
+# @default -- See below
+env:
+  # -- Set the container timezone
+  TZ: PST
+
+# -- Configure persistence settings for the chart under this key.
+## Config persistence is required for the Prometheus exporter sidecar.
+# @default -- See values.yaml
+persistence:
+  config:
+    enabled: true
+
+  media:
+    enabled: true
+    mountPath: /media
+
+metrics:
+  # -- Enable and configure Exportarr sidecar and Prometheus serviceMonitor.
+  # @default -- See values.yaml
+  enabled: true
+  serviceMonitor:
+    interval: 3m
+    scrapeTimeout: 1m
+    labels: {}
+  # -- Enable and configure Prometheus Rules for the chart under this key.
+  # @default -- See values.yaml
+  prometheusRule:
+    enabled: false
+    labels: {}
+    # -- Configure additionial rules for the chart under this key.
+    # @default -- See prometheusrules.yaml
+    rules: []
+      # - alert: SonarrDown
+      #   annotations:
+      #     description: Sonarr service is down.
+      #     summary: Sonarr is down.
+      #   expr: |
+      #     sonarr_system_status == 0
+      #   for: 5m
+      #   labels:
+      #     severity: critical
+  exporter:
+    image:
+      # -- image repository
+      repository: ghcr.io/onedr0p/exportarr
+      # -- image tag
+      tag: v1.3.1
+      # -- image pull policy
+      pullPolicy: IfNotPresent
+    env:
+      # -- metrics port
+      port: 9794
+      # -- Set to true to enable gathering of additional metrics (slow)
+      additionalMetrics: false
+      # -- Set to true to enable gathering unknown queue items
+      unknownQueueItems: false

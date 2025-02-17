@@ -1,12 +1,12 @@
 {{- /*
 The pod definition included in the controller.
 */ -}}
-{{- define "common.controller.pod" -}}
+{{- define "bjw-s.common.lib.controller.pod" -}}
   {{- with .Values.imagePullSecrets }}
 imagePullSecrets:
     {{- toYaml . | nindent 2 }}
   {{- end }}
-serviceAccountName: {{ include "common.names.serviceAccountName" . }}
+serviceAccountName: {{ include "bjw-s.common.lib.chart.names.serviceAccountName" . }}
 automountServiceAccountToken: {{ .Values.automountServiceAccountToken }}
   {{- with .Values.podSecurityContext }}
 securityContext:
@@ -21,8 +21,14 @@ runtimeClassName: {{ . }}
   {{- with .Values.schedulerName }}
 schedulerName: {{ . }}
   {{- end }}
+  {{- with .Values.hostIPC }}
+hostIPC: {{ . }}
+  {{- end }}
   {{- with .Values.hostNetwork }}
 hostNetwork: {{ . }}
+  {{- end }}
+  {{- with .Values.hostPID }}
+hostPID: {{ . }}
   {{- end }}
   {{- with .Values.hostname }}
 hostname: {{ . }}
@@ -51,9 +57,9 @@ initContainers:
         {{- $_ := set $container "name" $key }}
       {{- end }}
       {{- if $container.env -}}
-        {{- $_ := set $ "ObjectValues" (dict "env" $container.env) -}}
-        {{- $newEnv := fromYaml (include "common.controller.env_vars" $) -}}
-        {{- $_ := unset $.ObjectValues "env" -}}
+        {{- $_ := set $ "ObjectValues" (dict "envVars" $container.env) -}}
+        {{- $newEnv := fromYaml (include "bjw-s.common.lib.container.envVars" $) -}}
+        {{- $_ := unset $.ObjectValues "envVars" -}}
         {{- $_ := set $container "env" $newEnv.env }}
       {{- end }}
       {{- $initContainers = append $initContainers $container }}
@@ -61,24 +67,24 @@ initContainers:
     {{- tpl (toYaml $initContainers) $ | nindent 2 }}
   {{- end }}
 containers:
-  {{- include "common.controller.mainContainer" . | nindent 2 }}
-  {{- with .Values.additionalContainers }}
-    {{- $additionalContainers := list }}
+  {{- include "bjw-s.common.lib.controller.mainContainer" . | nindent 2 }}
+  {{- with (merge .Values.sidecars .Values.additionalContainers) }}
+    {{- $sidecarContainers := list }}
     {{- range $name, $container := . }}
       {{- if not $container.name -}}
         {{- $_ := set $container "name" $name }}
       {{- end }}
       {{- if $container.env -}}
-        {{- $_ := set $ "ObjectValues" (dict "env" $container.env) -}}
-        {{- $newEnv := fromYaml (include "common.controller.env_vars" $) -}}
+        {{- $_ := set $ "ObjectValues" (dict "envVars" $container.env) -}}
+        {{- $newEnv := fromYaml (include "bjw-s.common.lib.container.envVars" $) -}}
         {{- $_ := set $container "env" $newEnv.env }}
-        {{- $_ := unset $.ObjectValues "env" -}}
+        {{- $_ := unset $.ObjectValues "envVars" -}}
       {{- end }}
-      {{- $additionalContainers = append $additionalContainers $container }}
+      {{- $sidecarContainers = append $sidecarContainers $container }}
     {{- end }}
-    {{- tpl (toYaml $additionalContainers) $ | nindent 2 }}
+    {{- tpl (toYaml $sidecarContainers) $ | nindent 2 }}
   {{- end }}
-  {{- with (include "common.controller.volumes" . | trim) }}
+  {{- with (include "bjw-s.common.lib.controller.volumes" . | trim) }}
 volumes:
     {{- nindent 2 . }}
   {{- end }}
@@ -101,5 +107,8 @@ topologySpreadConstraints:
   {{- with .Values.tolerations }}
 tolerations:
     {{- toYaml . | nindent 2 }}
+  {{- end }}
+  {{- with .Values.controller.restartPolicy }}
+restartPolicy: {{ . }}
   {{- end }}
 {{- end -}}

@@ -1,10 +1,16 @@
 # sonarr
 
-![Version: 17.1.1](https://img.shields.io/badge/Version-17.1.1-informational?style=flat-square) ![AppVersion: 3.0.10.1567](https://img.shields.io/badge/AppVersion-3.0.10.1567-informational?style=flat-square)
+![Version: 1.8.0](https://img.shields.io/badge/Version-1.8.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.9.2244](https://img.shields.io/badge/AppVersion-4.0.9.2244-informational?style=flat-square)
 
 Smart PVR for newsgroup and bittorrent users
 
-**This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/k8s-home-lab/helm-charts/issues/new/choose)**
+**Homepage:** <https://github.com/pree/helm-charts/tree/master/charts/sonarr>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| pree | <pascal@reeb.io> |  |
 
 ## Source Code
 
@@ -13,66 +19,11 @@ Smart PVR for newsgroup and bittorrent users
 
 ## Requirements
 
-Kubernetes: `>=1.16.0-0`
-
-## Dependencies
-
 | Repository | Name | Version |
 |------------|------|---------|
-| https://library-charts.k8s-at-home.com | common | 4.5.2 |
-
-## TL;DR
-
-```console
-helm repo add k8s-home-lab https://k8s-home-lab.github.io/helm-charts/
-helm repo update
-helm install sonarr k8s-home-lab/sonarr
-```
-
-## Installing the Chart
-
-To install the chart with the release name `sonarr`
-
-```console
-helm install sonarr k8s-home-lab/sonarr
-```
-
-## Uninstalling the Chart
-
-To uninstall the `sonarr` deployment
-
-```console
-helm uninstall sonarr
-```
-
-The command removes all the Kubernetes components associated with the chart **including persistent volumes** and deletes the release.
-
-## Configuration
-
-Read through the [values.yaml](./values.yaml) file. It has several commented out suggested values.
-Other values may be used from the [values.yaml](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml) from the [common library](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common).
-
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
-
-```console
-helm install sonarr \
-  --set env.TZ="America/New York" \
-    k8s-home-lab/sonarr
-```
-
-Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
-
-```console
-helm install sonarr k8s-home-lab/sonarr -f values.yaml
-```
-
-## Custom configuration
-
-N/A
+| https://bjw-s.github.io/helm-charts/ | common | 1.5.1 |
 
 ## Values
-
-**Important**: When deploying an application Helm chart you can add more values from our common library chart [here](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common)
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
@@ -88,40 +39,21 @@ N/A
 | metrics.exporter.env.unknownQueueItems | bool | `false` | Set to true to enable gathering unknown queue items |
 | metrics.exporter.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | metrics.exporter.image.repository | string | `"ghcr.io/onedr0p/exportarr"` | image repository |
-| metrics.exporter.image.tag | string | `"v1.3.1"` | image tag |
+| metrics.exporter.image.tag | string | `"v2.0.1"` | image tag |
 | metrics.prometheusRule | object | See values.yaml | Enable and configure Prometheus Rules for the chart under this key. |
 | metrics.prometheusRule.rules | list | See prometheusrules.yaml | Configure additionial rules for the chart under this key. |
 | metrics.serviceMonitor.interval | string | `"3m"` |  |
 | metrics.serviceMonitor.labels | object | `{}` |  |
 | metrics.serviceMonitor.scrapeTimeout | string | `"1m"` |  |
-| persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
+| persistence | object | See values.yaml | Configure persistence settings for the chart under this key. # Config persistence is required for the Prometheus exporter sidecar. |
 | probes | object | See values.yaml | Configures the probes for the main Pod. |
 | service | object | See values.yaml | Configures service settings for the chart. |
 
-## Changelog
+## License
 
-### Version 17.1.1
-
-#### Added
-
-N/A
-
-#### Changed
-
-* Update image to 3.0.10.1567
-
-#### Fixed
-
-N/A
-
-### Older versions
-
-A historical overview of changes can be found on [ArtifactHUB](https://artifacthub.io/packages/helm/k8s-home-lab-helm-charts/sonarr?modal=changelog)
-
-## Support
-
-- See the [Docs](https://docs.k8s-at-home.com/our-helm-charts/getting-started/)
-- Open an [issue](https://github.com/k8s-home-lab/helm-charts/issues/new/choose)
+This Helm chart is free software: you can redistribute it and/or modify it under the terms
+of the GNU Affero General Public License as published by the Free Software Foundation,
+version 3 of the License.
 
 ----------------------------------------------
-Autogenerated from chart metadata using [helm-docs v0.1.1](https://github.com/k8s-at-home/helm-docs/releases/v0.1.1)
+Autogenerated from chart metadata using [helm-docs](https://github.com/norwoodj/helm-docs)

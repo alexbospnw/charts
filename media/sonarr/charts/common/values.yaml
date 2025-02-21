@@ -404,8 +404,8 @@ ingress:
 
     # -- Provide additional annotations which may be required.
     annotations:
-      {}
-      # kubernetes.io/ingress.class: nginx
+      
+      cert-manager.io/cluster-issuer: letsencrypt-cloudflare
       # kubernetes.io/tls-acme: "true"
 
     # -- Provide additional labels which may be required.

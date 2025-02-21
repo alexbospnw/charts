@@ -35,46 +35,6 @@ ingress:
     # -- Enables or disables the ingress
     enabled: false
 
-    # -- Make this the primary ingress (used in probes, notes, etc...).
-    # If there is more than 1 ingress, make sure that only 1 ingress is marked as primary.
-    primary: true
-
-    # -- Override the name suffix that is used for this ingress.
-    nameOverride:
-
-    # -- Provide additional annotations which may be required.
-    annotations:
-
-      cert-manager.io/cluster-issuer: letsencrypt-cloudflare
-      # kubernetes.io/tls-acme: "true"
-
-    # -- Provide additional labels which may be required.
-    labels: {}
-
-    # -- Set the ingressClass that is used for this ingress.
-    ingressClassName: # "nginx"
-
-    ## Configure the hosts for the ingress
-    hosts:
-      - # -- Host address. Helm template can be passed.
-        host: sonarr2.greaterfaydark.net
-        ## Configure the paths for the host
-        paths:
-          - # -- Path.  Helm template can be passed.
-            path: /
-            pathType: Prefix
-            service:
-              # -- Overrides the service name reference for this path
-              name: sonarr
-              # -- Overrides the service port reference for this path
-              port: 8989
-
-    # -- Configure TLS for the ingress. Both secretName and hosts can process a Helm template.
-    tls:
-     - secretName: sonarr-ingress-lets-encrypt
-       hosts:
-         - sonarr2.greaterfaydark.net
-
 # -- Configures the probes for the main Pod.
 # @default -- See values.yaml
 probes:
@@ -97,6 +57,15 @@ probes:
       periodSeconds: 10
       successThreshold: 1
       timeoutSeconds: 10
+
+
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+
+
+
+
 
 # -- Configure persistence settings for the chart under this key.
 ## Config persistence is required for the Prometheus exporter sidecar.

@@ -78,7 +78,8 @@ persistence:
     enabled: true
     mountPath: /media
     existingClaim: media-pvc
-    subpath: media
+    subpath: /Library/media
+
 # persistence:
   # -- Default persistence for configuration files.
   # @default -- See below

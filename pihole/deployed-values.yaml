@@ -118,7 +118,7 @@ serviceWeb:
     nodePort: ""
 
   # -- `spec.type` for the web interface Service
-  type: ClusterIP
+  type: LoadBalancer
 
   # -- `spec.externalTrafficPolicy` for the web interface Service
   externalTrafficPolicy: Local

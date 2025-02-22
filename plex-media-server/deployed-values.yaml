@@ -205,7 +205,9 @@ service:
   annotations: {}
 
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/hostname : k8w01
+  
 
 tolerations: []
 

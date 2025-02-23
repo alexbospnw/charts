@@ -69,6 +69,11 @@ persistence:
     existingClaim: media-pvc
     subPath: Library/media
 
+
+securityContext:
+  runAsUser: 1200
+  runAsGroup: 1200
+
 metrics:
   # -- Enable and configure Exportarr sidecar and Prometheus serviceMonitor.
   # @default -- See values.yaml

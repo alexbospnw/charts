@@ -71,8 +71,8 @@ persistence:
 
 
 securityContext:
-  runAsUser: 1200
-  runAsGroup: 1200
+  runAsUser: 0
+  runAsGroup: 0
 
 metrics:
   # -- Enable and configure Exportarr sidecar and Prometheus serviceMonitor.

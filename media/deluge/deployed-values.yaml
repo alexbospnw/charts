@@ -17,9 +17,9 @@ image:
 # @default -- See below
 env:
   # -- Specify the user ID the application will run as
-  PUID: "1000"
+  PUID: "0"
   # -- Specify the group ID the application will run as
-  PGID: "1000"
+  PGID: "0"
   # -- Set the container timezone
   TZ: "PST"
   # -- Set the loglevel output when running Deluge

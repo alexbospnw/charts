@@ -76,7 +76,7 @@ persistence:
 
   media:
     enabled: true
-    mountPath: /
+    mountPath: /tv
     existingClaim: media-pvc
     subPath: Library/media
 

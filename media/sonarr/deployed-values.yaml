@@ -78,7 +78,7 @@ persistence:
     enabled: true
     mountPath: /tv
     existingClaim: media-pvc
-    subPath: Library/media
+    subPath: Library/media/tv
 
 # persistence:
   # -- Default persistence for configuration files.

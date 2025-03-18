@@ -80,6 +80,21 @@ persistence:
     existingClaim: media-pvc
     subPath: Library/media/tv
 
+
+  shared:
+    enabled: true
+    mountPath: /downloads
+    existingClaim: media-pvc
+    mountPath: Library/media/downloads
+    
+
+    # -- Set the medium to "Memory" to mount a tmpfs (RAM-backed filesystem) instead
+    # of the storage medium that backs the node.
+    medium: # Memory
+
+    # -- If the `SizeMemoryBackedVolumes` feature gate is enabled, you can
+    # specify a size for memory backed volumes.
+    sizeLimit: # 1Gi
 # persistence:
   # -- Default persistence for configuration files.
   # @default -- See below

@@ -53,6 +53,6 @@ persistence:
 
   shared:
     enabled: true
-#    mountPath: /downloads
-#    existingClaim: media-downloads
- #   mountPath: /downloads
+    mountPath: /downloads
+    existingClaim: media-downloads
+    mountPath: /downloads

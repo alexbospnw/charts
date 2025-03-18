@@ -63,10 +63,6 @@ securityContext:
   runAsUser: 0
   runAsGroup: 0
 
-
-
-
-
 # -- Configure persistence settings for the chart under this key.
 ## Config persistence is required for the Prometheus exporter sidecar.
 # @default -- See values.yaml
@@ -80,107 +76,8 @@ persistence:
     existingClaim: media-pvc
     subPath: Library/media/tv
 
-
   shared:
     enabled: true
     mountPath: /downloads
-    existingClaim: mmedia-downloads
+    existingClaim: media-downloads
     mountPath: /downloads
-    
-
-    # -- Set the medium to "Memory" to mount a tmpfs (RAM-backed filesystem) instead
-    # of the storage medium that backs the node.
-    medium: # Memory
-
-    # -- If the `SizeMemoryBackedVolumes` feature gate is enabled, you can
-    # specify a size for memory backed volumes.
-    sizeLimit: # 1Gi
-# persistence:
-  # -- Default persistence for configuration files.
-  # @default -- See below
-#  config:
-    # -- Enables or disables the persistence item
-#    enabled: false
-
-    # -- Sets the persistence type
-    # Valid options are pvc, emptyDir, hostPath, secret, configMap or custom
-#    type: pvc
-
-    # -- Where to mount the volume in the main container.
-    # Defaults to `/<name_of_the_volume>`,
-    # setting to '-' creates the volume but disables the volumeMount.
-#    mountPath: # /config
-    # -- Specify if the volume should be mounted read-only.
-#    readOnly: false
-    # -- Override the name suffix that is used for this volume.
-#    nameOverride:
-
-    # -- Storage Class for the config volume.
-    # If set to `-`, dynamic provisioning is disabled.
-    # If set to something else, the given storageClass is used.
-    # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.
-#    storageClass: # "-"
-
-    # -- If you want to reuse an existing claim, the name of the existing PVC can be passed here.
-#    existingClaim: # your-claim
-
-    # -- Used in conjunction with `existingClaim`. Specifies a sub-path inside the referenced volume instead of its root
-#    subPath: # some-subpath
-
-    # -- AccessMode for the persistent volume.
-    # Make sure to select an access mode that is supported by your storage provider!
-    # [[ref]](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
-#    accessMode: ReadWriteOnce
-
-    # -- The amount of storage that is requested for the persistent volume.
-#    size: 1Gi
-
-    # -- Set to true to retain the PVC upon `helm uninstall`
-#    retain: false
-
-
-
-
-
-
-
-metrics:
-  # -- Enable and configure Exportarr sidecar and Prometheus serviceMonitor.
-  # @default -- See values.yaml
-  enabled: false
-  serviceMonitor:
-    interval: 3m
-    scrapeTimeout: 1m
-    labels: {}
-  # -- Enable and configure Prometheus Rules for the chart under this key.
-  # @default -- See values.yaml
-  prometheusRule:
-    enabled: false
-    labels: {}
-    # -- Configure additionial rules for the chart under this key.
-    # @default -- See prometheusrules.yaml
-    rules: []
-      # - alert: SonarrDown
-      #   annotations:
-      #     description: Sonarr service is down.
-      #     summary: Sonarr is down.
-      #   expr: |
-      #     sonarr_system_status == 0
-      #   for: 5m
-      #   labels:
-      #     severity: critical
-  exporter:
-    image:
-      # -- image repository
-      repository: ghcr.io/onedr0p/exportarr
-      # -- image tag
-      tag: v2.0.1
-      # -- image pull policy
-      pullPolicy: IfNotPresent
-    env:
-      # -- metrics port
-      port: 9794
-      # -- Set to true to enable gathering of additional metrics (slow)
-      additionalMetrics: false
-      # -- Set to true to enable gathering unknown queue items
-      unknownQueueItems: false

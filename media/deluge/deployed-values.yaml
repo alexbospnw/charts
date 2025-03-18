@@ -50,3 +50,9 @@ persistence:
     mountPath: /media
     existingClaim: media-pvc
     subPath: Library/media
+
+  shared:
+    enabled: true
+    mountPath: /downloads
+    existingClaim: mmedia-downloads
+    mountPath: /downloads

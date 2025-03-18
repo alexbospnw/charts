@@ -83,7 +83,7 @@ persistence:
 
   shared:
     enabled: true
-    mountPath: /downloads
+    mountPath: /media/downloads
     existingClaim: media-pvc
     mountPath: Library/media/downloads
     

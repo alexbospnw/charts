@@ -83,9 +83,9 @@ persistence:
 
   shared:
     enabled: true
-    mountPath: /media/downloads
-    existingClaim: media-pvc
-    mountPath: Library/media/downloads
+    mountPath: /downloads
+    existingClaim: mmedia-downloads
+    mountPath: /downloads
     
 
     # -- Set the medium to "Memory" to mount a tmpfs (RAM-backed filesystem) instead

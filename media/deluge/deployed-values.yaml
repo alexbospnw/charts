@@ -54,5 +54,5 @@ persistence:
   shared:
     enabled: true
     mountPath: /downloads
-    existingClaim: mmedia-downloads
+    existingClaim: media-downloads
     mountPath: /downloads

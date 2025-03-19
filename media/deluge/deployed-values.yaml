@@ -55,4 +55,4 @@ persistence:
     enabled: true
     mountPath: /downloads
     existingClaim: media-downloads
-    mountPath: /downloads
+

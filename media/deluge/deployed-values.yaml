@@ -45,9 +45,10 @@ securityContext:
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
-persistence: {
-  config:
-    enabled: true
+persistence: 
+  config: {
+    enabled: true 
+    }
 
   media:
     enabled: true
@@ -60,4 +61,4 @@ persistence: {
     mountPath: config/downloads
     existingClaim: media-downloads
 
-}
+

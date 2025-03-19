@@ -48,18 +48,16 @@ securityContext:
 persistence: 
   config: {
     enabled: true 
-    }
 
-  media: {
+  media:
     enabled: true
     mountPath: /media
     existingClaim: media-pvc
     subPath: Library/media
-    }
 
   shared:
     enabled: true
     mountPath: config/downloads
     existingClaim: media-downloads
 
-
+}

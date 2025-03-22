@@ -68,6 +68,7 @@ securityContext:
 # @default -- See values.yaml
 persistence:
   config:
+    existingClaim: media-pvc
     enabled: true
 
   media:

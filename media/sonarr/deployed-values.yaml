@@ -69,16 +69,13 @@ securityContext:
 persistence:
   config:
     existingClaim: media-pvc
-    enabled: true
+    enabled: false
 
   media:
     enabled: true
-    mountPath: /tv
+    mountPath: /
     existingClaim: media-pvc
-    subPath: Library/media/tv
+    subPath: Library/media/
 
-  shared:
-    enabled: true
-    mountPath: config/downloads
-    existingClaim: media-downloads
+
 

@@ -72,9 +72,9 @@ persistence:
 
   media:
     enabled: true
-    mountPath: /testmedia
+    mountPath: /media
     existingClaim: media-pvc
-    subPath: Library/media/
+    subPath: Library/media
 
 
 

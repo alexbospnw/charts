@@ -68,12 +68,11 @@ securityContext:
 # @default -- See values.yaml
 persistence:
   config:
-    existingClaim: media-pvc
     enabled: false
 
   media:
     enabled: true
-    mountPath: /
+    mountPath: /testmedia
     existingClaim: media-pvc
     subPath: Library/media/
 

@@ -27,3 +27,5 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: tunarrfinconfig-pvc
+      nodeSelector:
+        kubernetes.io/hostname : k8w01

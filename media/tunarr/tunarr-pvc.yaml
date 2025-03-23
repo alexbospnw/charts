@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tunarrfinconfig-pvc
+  namespace: media
+spec:
+  capacity:
+    storage: 5Gi
+  storageClassName: "ceph-fs-retain" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: tunarrfinconfig-pvc
+  accessModes:
+    - ReadWriteOnce

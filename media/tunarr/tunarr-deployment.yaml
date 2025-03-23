@@ -21,9 +21,8 @@ spec:
         ports:
         - containerPort: 8000
         volumeMounts:
-        - mountPath: "/config/"
+        - mountPath: "root/.local/share/tunarr/"
           name: config
-          subPath: tunarr
       volumes:
         - name: config
           persistentVolumeClaim:

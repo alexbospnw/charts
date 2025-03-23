@@ -23,7 +23,7 @@ spec:
         volumeMounts:
         - mountPath: "/config/tunarr"
           name: config
-    volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: tunarrfinconfig-pvc
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: tunarrfinconfig-pvc

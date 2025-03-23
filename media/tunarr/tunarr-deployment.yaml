@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tunarr-deployment
+  namespace: media
+  labels:
+    app: tunarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tunarr
+  template:
+    metadata:
+      labels:
+        app: tunarr
+    spec:
+      containers:
+      - name: tunarr
+        image: chrisbenincasa/tunarr:latest
+        ports:
+        - containerPort: 80

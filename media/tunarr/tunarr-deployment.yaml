@@ -19,4 +19,4 @@ spec:
       - name: tunarr
         image: chrisbenincasa/tunarr:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8000

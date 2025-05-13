@@ -1,0 +1,71 @@
+# Actual Budget Helm Chart
+
+{{ template "chart.badgesSection" . }}
+
+{{ template "chart.description" . }}
+
+## Prerequisites
+- Kubernetes 1.19+
+- Helm 3.0+
+
+## Installation
+1. Add the repository containing this Helm chart:
+
+```bash
+helm repo add k8s-charts https://kriegalex.github.io/k8s-charts/
+```
+
+2. Install the chart using Helm:
+
+```bash
+helm upgrade --install actual-budget k8s-charts/actual-budget
+```
+
+### Installing with Custom Values
+To customize your deployment, you can override the default values in the `values.yaml` file. Here's an example of how to use custom values:
+
+```bash
+helm show values k8s-charts/actual-budget > custom-values.yaml
+helm upgrade --install actual-budget k8s-charts/actual-budget -f custom-values.yaml
+```
+
+## Uninstallation
+To uninstall the chart and delete all resources:
+
+```bash
+helm uninstall actual-budget
+```
+
+## Chart Structure
+The chart has the following structure:
+
+```
+actual-budget/
+├── Chart.yaml          # Metadata for the Helm chart
+├── values.yaml         # Default configuration values
+├── templates/          # Directory for Kubernetes manifest templates
+│   ├── _helpers.tpl    # Helper template for generating names and labels
+│   ├── deployment.yaml # Deployment resource for Actual Budget
+│   ├── service.yaml    # Service resource for exposing Actual Budget
+│   ├── pvc.yaml        # Persistent Volume Claim for data storage
+│   └── ingress.yaml    # Ingress management
+```
+
+## Customization
+You can customize various aspects of this chart by modifying the `values.yaml` file. Below are some key options:
+
+### Image Configuration
+Set the image repository and tag for deploying different versions:
+
+```yaml
+image:
+  repository: actualbudget/actual-server
+  tag: latest
+  pullPolicy: Always
+```
+
+## Values
+
+{{ template "chart.valuesTable" . }}
+
+{{ template "helm-docs.versionFooter" . }}

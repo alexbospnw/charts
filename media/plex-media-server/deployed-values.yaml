@@ -20,7 +20,7 @@ ingress:
   ingressClassName: "nginx"
 
   # -- The url to use for the ingress reverse proxy to point at this pms instance
-  url: "plex2.greaterfaydark.net"
+  url: "plex.greaterfaydark.net"
 
   # -- Optional secret name to provide valid https connections
   # using an existing SSL certificate
@@ -226,8 +226,9 @@ extraEnv:
   HOSTNAME: "Greater-Faydark-PlexServer"
   TZ: "America/Los_Angeles"
 #   PLEX_UPDATE_CHANNEL: "5"
-#   PLEX_UID: "uid of plex user"
-#   PLEX_GID: "group id of plex user"
+  ADVERTISE_IP: "https://192.168.1.80:32400/"
+  PLEX_UID: "0"
+  PLEX_GID: "0"
 # a list of CIDRs that can use the server without authentication
   # this is only used for the first startup of PMS
 #   ALLOWED_NETWORKS: "0.0.0.0/0"

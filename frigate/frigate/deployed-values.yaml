@@ -248,15 +248,15 @@ persistence:
     skipuninstall: false
 
 # -- Set resource limits/requests for the Pod(s)
-resources: {}
+resources: 
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
   #   gpu.intel.com/i915: 1
-  # requests:
+  requests:
   #   cpu: 100m
   #   memory: 128Mi
-  #   gpu.intel.com/i915: 1
+    gpu.intel.com/i915: 1
 
 # -- Set Frigate Container Security Context
 securityContext: {}

@@ -249,10 +249,10 @@ persistence:
 
 # -- Set resource limits/requests for the Pod(s)
 resources: 
-  # limits:
+  limits:
   #   cpu: 100m
   #   memory: 128Mi
-  #   gpu.intel.com/i915: 1
+    gpu.intel.com/i915: 1
   requests:
   #   cpu: 100m
   #   memory: 128Mi

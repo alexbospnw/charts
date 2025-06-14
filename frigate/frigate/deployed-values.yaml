@@ -80,6 +80,18 @@ config: |
     # Optional: interval in seconds for publishing stats (default: shown below)
     stats_interval: 60
 
+  record:
+    enabled: True
+    retain:
+      days: 7
+      mode: motion
+    alerts:
+      retain:
+        days: 30
+    detections:
+      retain:
+        days: 30
+
   detectors:
     # coral:
     #   type: edgetpu

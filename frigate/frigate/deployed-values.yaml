@@ -97,16 +97,16 @@ config: |
               - detect
 
   #   # Name of your camera
-  #   front_door:
-  #     ffmpeg:
-  #       inputs:
-  #         - path: rtsp://{FRIGATE_RSTP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@10.0.10.10:554/cam/realmonitor?channel=1&subtype=2
-  #           roles:
-  #             - detect
-  #             - rtmp
-  #     width: 1280
-  #     height: 720
-  #     fps: 5
+    front_door:
+      ffmpeg:
+        inputs:
+          - path: rtsp://192.168.1.9:8554/cam
+            roles:
+              - detect
+              - rtmp
+      width: 1280
+      height: 720
+      fps: 5
 
 # Probes configuration
 probes:
@@ -168,6 +168,7 @@ ingress:
     # nginx.org/proxy-read-timeout: "3600"
     # nginx.org/proxy-send-timeout: "3600"
     # nginx.org/websocket-services: "<release_name>-frigate" # TODO: can this be automated?
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare
   # -- list of hosts and their paths and ports that ingress controller should repsond to.
   # -- alternatively use `http` if anonymous auth is allowed
@@ -181,7 +182,7 @@ ingress:
   tls: 
     - hosts:
       - frigate.greaterfaydark.net
-      secretName: sonarr-ingress-cert
+      secretName: frigate-ingress-cert
 persistence:
   data:
     # Data directory is obsolete. Use config and media instead.

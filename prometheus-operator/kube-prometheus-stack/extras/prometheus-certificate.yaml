@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prometheus-ingress-cert
+  namespace: prometheus-operator
+spec:
+  dnsNames:
+    - prometheus.greaterfaydark.net
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-cloudflare
+  secretName: prometheus-ingress-cert
+  usages:
+    - digital signature
+    - key encipherment

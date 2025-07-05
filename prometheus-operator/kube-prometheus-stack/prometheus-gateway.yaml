@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
   name: prometheus-gateway
-  namespace: media
+  namespace: prometheus-operator
 spec:
   selector:
     istio: gateway
@@ -15,4 +15,13 @@ spec:
         protocol: HTTPS
       tls:
         credentialName: prometheus-ingress-lets-encrypt
+        mode: SIMPLE
+    - hosts:
+        - grafana.greaterfaydark.net
+      port:
+        name: https-frontend
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: grafana-ingress-lets-encrypt
         mode: SIMPLE

@@ -7,7 +7,7 @@ spec:
   gateways:
     - prometheus-gateway
   hosts:
-    - '*'
+    - 'prometheus.greaterfaydark.net'
   http:
     - match:
         - uri:
@@ -15,3 +15,21 @@ spec:
       route:
         - destination:
             host: prometheus-operated.prometheus-operator.svc.cluster.local
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: grafana-vs
+  namespace: prometheus-operator
+spec:
+  gateways:
+    - prometheus-gateway
+  hosts:
+    - 'grafana.greaterfaydark.net'
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: kube-prometheus-grafana.prometheus-operator.svc.cluster.local

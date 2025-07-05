@@ -19,7 +19,7 @@ spec:
     - hosts:
         - grafana.greaterfaydark.net
       port:
-        name: https-frontend
+        name: grafana-https-frontend
         number: 443
         protocol: HTTPS
       tls:

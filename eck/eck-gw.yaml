@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: eck-gateway
+spec:
+  selector:
+    istio: gateway
+  servers:
+    - hosts:
+        - kibana.greaterfaydark.net
+      port:
+        name: https-frontend
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: kibana-ingress-lets-encrypt
+        mode: SIMPLE
+    - hosts:
+        - elastisearch.greaterfaydark.net
+      port:
+        name: elastisearch-https-frontend
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: elastisearch-ingress-lets-encrypt
+        mode: SIMPLE

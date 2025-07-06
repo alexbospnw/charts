@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: kibana-vs
+spec:
+  gateways:
+    - eck-gateway
+  hosts:
+    - 'kibana.greaterfaydark.net'
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: quickstart-kb-http.default.svc.cluster.local
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: elastisearch-vs
+spec:
+  gateways:
+    - eck-gateway
+  hosts:
+    - 'elastisearch.greaterfaydark.net'
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: quickstart-es-internal-http.default.svc.cluster.local

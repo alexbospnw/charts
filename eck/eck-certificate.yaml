@@ -1,0 +1,33 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kibana-ingress-cert
+  namespace: istio-gateway
+spec:
+  dnsNames:
+    - kibana.greaterfaydark.net
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-cloudflare
+  secretName: kibana-ingress-lets-encrypt
+  usages:
+    - digital signature
+    - key encipherment
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: elastisearch-ingress-cert
+  namespace: istio-gateway
+spec:
+  dnsNames:
+    - elastisearch.greaterfaydark.net
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-cloudflare
+  secretName: elastisearch-ingress-lets-encrypt
+  usages:
+    - digital signature
+    - key encipherment

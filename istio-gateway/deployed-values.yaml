@@ -101,7 +101,8 @@ _internal_defaults_do_not_set:
   # Annotations to apply to all resources
   annotations: {}
 
-  nodeSelector: {}
+  nodeSelector:
+    kubernetes.io/hostname : k8w01
 
   tolerations: []
 

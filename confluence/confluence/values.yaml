@@ -539,7 +539,7 @@ ingress:
   # this hostname will be routed by the Ingress Resource to the appropriate backend
   # Service.
   #
-  host: confluence.greaterfaydark.net
+  host: confluence2.greaterfaydark.net
 
   # -- The base path for the Ingress Resource. For example '/confluence'. Based on a
   # 'ingress.host' value of 'company.k8s.com' this would result in a URL of

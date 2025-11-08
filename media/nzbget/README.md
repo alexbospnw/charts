@@ -1,91 +1,117 @@
 # nzbget
 
-This is a helm chart for [nzbget](https://nzbget.org/) leveraging the [Linuxserver.io image](https://hub.docker.com/r/linuxserver/nzbget/)
+![Version: 12.4.2](https://img.shields.io/badge/Version-12.4.2-informational?style=flat-square) ![AppVersion: v21.1](https://img.shields.io/badge/AppVersion-v21.1-informational?style=flat-square)
+
+NZBGet is a Usenet downloader client
+
+**This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/k8s-at-home/charts/issues/new/choose)**
+
+## Source Code
+
+* <https://nzbget.net/>
+* <https://github.com/k8s-at-home/container-images>
+
+## Requirements
+
+Kubernetes: `>=1.16.0-0`
+
+## Dependencies
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://library-charts.k8s-at-home.com | common | 4.5.2 |
 
 ## TL;DR
 
-```shell
-$ helm repo add k8s-usenet https://raw.githubusercontent.com/aldoborrero/k8s-usenet/master/charts/
-$ helm install k8s-usenet/nzbget
+```console
+helm repo add k8s-at-home https://k8s-at-home.com/charts/
+helm repo update
+helm install nzbget k8s-at-home/nzbget
 ```
 
 ## Installing the Chart
 
-To install the chart with the release name `my-release`:
+To install the chart with the release name `nzbget`
 
 ```console
-helm install my-release k8s-usenet/nzbget
+helm install nzbget k8s-at-home/nzbget
 ```
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `my-release` deployment:
+To uninstall the `nzbget` deployment
 
 ```console
-helm delete my-release
+helm uninstall nzbget
 ```
 
-The command removes all the Kubernetes components associated with the chart and deletes the release.
+The command removes all the Kubernetes components associated with the chart **including persistent volumes** and deletes the release.
 
 ## Configuration
 
-The following tables lists the configurable parameters of the Sentry chart and their default values.
+Read through the [values.yaml](./values.yaml) file. It has several commented out suggested values.
+Other values may be used from the [values.yaml](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml) from the [common library](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common).
 
-| Parameter                              | Description                                                                                  | Default              |
-| -------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------- |
-| `image.repository`                     | Image repository                                                                             | `linuxserver/nzbget` |
-| `image.tag`                            | Image tag. Possible values listed [here](https://hub.docker.com/r/linuxserver/nzbget/tags/). | `amd64-latest`       |
-| `image.pullPolicy`                     | Image pull policy                                                                            | `Always`             |
-| `strategyType`                         | Specifies the strategy used to replace old Pods by new ones                                  | `Recreate`           |
-| `timezone`                             | Timezone the nzbget instance should run as, e.g. 'America/New_York'                          | `UTC`                |
-| `puid`                                 | process userID the nzbget instance should run as                                             | `1001`               |
-| `pgid`                                 | process groupID the nzbget instance should run as                                            | `1001`               |
-| `service.type`                         | Kubernetes service type for the nzbget GUI                                                   | `ClusterIP`          |
-| `service.port`                         | Kubernetes port where the nzbget GUI is exposed                                              | `8080`               |
-| `service.annotations`                  | Service annotations for the nzbget GUI                                                       | `{}`                 |
-| `service.labels`                       | Custom labels                                                                                | `{}`                 |
-| `service.loadBalancerIP`               | Loadbalance IP for the nzbget GUI                                                            | `{}`                 |
-| `service.loadBalancerSourceRanges`     | List of IP CIDRs allowed access to load balancer (if supported)                              | None                 |
-| `ingress.enabled`                      | Enables Ingress                                                                              | `false`              |
-| `ingress.annotations`                  | Ingress annotations                                                                          | `{}`                 |
-| `ingress.labels`                       | Custom labels                                                                                | `{}`                 |
-| `ingress.path`                         | Ingress path                                                                                 | `/`                  |
-| `ingress.hosts`                        | Ingress accepted hostnames                                                                   | `nzbget.local`       |
-| `ingress.tls`                          | Ingress TLS configuration                                                                    | `[]`                 |
-| `persistence.config.enabled`           | Use persistent volume to store configuration data                                            | `true`               |
-| `persistence.config.size`              | Size of persistent volume claim                                                              | `1Gi`                |
-| `persistence.config.existingClaim`     | Use an existing PVC to persist data                                                          | `nil`                |
-| `persistence.config.storageClass`      | Type of persistent volume claim                                                              | `-`                  |
-| `persistence.config.accessMode`        | Persistence access mode                                                                      | `ReadWriteOnce`      |
-| `persistence.downloads.enabled`        | Use persistent volume for downloads                                                          | `true`               |
-| `persistence.downloads.size`           | Size of persistent volume claim                                                              | `10Gi`               |
-| `persistence.downloads.existingClaim`  | Use an existing PVC to persist data                                                          | `nil`                |
-| `persistence.downloads.storageClass`   | Type of persistent volume claim                                                              | `-`                  |
-| `persistence.downloads.accessMode`     | Persistence access mode                                                                      | `ReadWriteOnce`      |
-| `persistence.tv.enabled`               | Use persistent volume for tv show persistence                                                | `true`               |
-| `persistence.tv.size`                  | Size of persistent volume claim                                                              | `10Gi`               |
-| `persistence.tv.existingClaim`         | Use an existing PVC to persist data                                                          | `nil`                |
-| `persistence.tv.storageClass`          | Type of persistent volume claim                                                              | `-`                  |
-| `persistence.tv.accessMode`            | Persistence access mode                                                                      | `ReadWriteOnce`      |
-| `persistence.extraExistingClaimMounts` | Optionally add multiple existing claims                                                      | `[]`                 |
-| `resources`                            | CPU/Memory resource requests/limits                                                          | `{}`                 |
-| `nodeSelector`                         | Node labels for pod assignment                                                               | `{}`                 |
-| `tolerations`                          | Toleration labels for pod assignment                                                         | `[]`                 |
-| `affinity`                             | Affinity settings for pod assignment                                                         | `{}`                 |
-| `podAnnotations`                       | Key-value pairs to add as pod annotations                                                    | `{}`                 |
-
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
+Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
 ```console
-helm install my-release \
-  --set timezone="America/New York" \
-    k8s-usenet/nzbget
+helm install nzbget \
+  --set env.TZ="America/New York" \
+    k8s-at-home/nzbget
 ```
 
-Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
+Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install my-release -f values.yaml k8s-usenet/nzbget
+helm install nzbget k8s-at-home/nzbget -f values.yaml
 ```
 
-Read through the [values.yaml](values.yaml) file. It has several commented out suggested values.
+## Custom configuration
+
+The default login details (change ASAP) are:
+
+* login:nzbget
+* password:tegbzn6789
+
+## Values
+
+**Important**: When deploying an application Helm chart you can add more values from our common library chart [here](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common)
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
+| image.repository | string | `"ghcr.io/k8s-at-home/nzbget"` | image repository |
+| image.tag | string | `"v21.1"` | image tag |
+| ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
+| persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
+| service | object | See values.yaml | Configures service settings for the chart. |
+
+## Changelog
+
+### Version 12.4.2
+
+#### Added
+
+N/A
+
+#### Changed
+
+* Upgraded `common` chart dependency to version 4.5.2
+
+#### Fixed
+
+N/A
+
+### Older versions
+
+A historical overview of changes can be found on [ArtifactHUB](https://artifacthub.io/packages/helm/k8s-at-home/nzbget?modal=changelog)
+
+## Support
+
+- See the [Docs](https://docs.k8s-at-home.com/our-helm-charts/getting-started/)
+- Open an [issue](https://github.com/k8s-at-home/charts/issues/new/choose)
+- Ask a [question](https://github.com/k8s-at-home/organization/discussions)
+- Join our [Discord](https://discord.gg/sTMX7Vh) community
+
+----------------------------------------------
+Autogenerated from chart metadata using [helm-docs v0.1.1](https://github.com/k8s-at-home/helm-docs/releases/v0.1.1)

@@ -37,7 +37,7 @@ persistence:
     enabled: true
     mountPath: /media
     accessMode: RWO
-
+    size: 10gi
   downloads:
     enabled: true
     mountPath: /downloads

@@ -36,10 +36,10 @@ persistence:
   media:
     enabled: true
     mountPath: /media
-    accessMode: RWO
-    size: 10gi
+    accessMode: ReadWriteOnce
+    size: 10Gi
   downloads:
     enabled: true
     mountPath: /downloads
-    accessMode: RWO
+    accessMode: ReadWriteOnce
     size: 60Gi

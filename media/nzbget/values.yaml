@@ -36,7 +36,9 @@ persistence:
   media:
     enabled: true
     mountPath: /media
+    accessMode: RWO
 
   downloads:
     enabled: true
     mountPath: /downloads
+    accessMode: RWO

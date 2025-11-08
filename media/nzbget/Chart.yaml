@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: amd64-latest
+description: nzbget makes Usenet as simple and streamlined as possible by automating
+  everything we can.
+home: https://nzbget.net/
+keywords:
+- nzbget
+- usenet
+- bittorrent
+name: nzbget
+sources:
+- https://hub.docker.com/r/linuxserver/nzbget/
+- https://nzbget.net/
+type: application
+version: 1.0.0

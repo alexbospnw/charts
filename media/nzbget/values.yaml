@@ -42,3 +42,4 @@ persistence:
     enabled: true
     mountPath: /downloads
     accessMode: RWO
+    size: 60Gi

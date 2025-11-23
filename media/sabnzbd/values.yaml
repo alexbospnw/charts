@@ -53,6 +53,7 @@ persistence:
     size: 60Gi
   downloads:
     enabled: true
-    mountPath: /downloads
-    accessMode: ReadWriteOnce
-    size: 60Gi
+    mountPath: /media
+    existingClaim: media-pvc
+    subPath: Library/media
+

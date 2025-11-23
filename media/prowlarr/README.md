@@ -1,6 +1,6 @@
 # prowlarr
 
-![Version: 1.40.0](https://img.shields.io/badge/Version-1.40.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.2.4794](https://img.shields.io/badge/AppVersion-1.25.2.4794-informational?style=flat-square)
+![Version: 1.49.1](https://img.shields.io/badge/Version-1.49.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0.2.5116](https://img.shields.io/badge/AppVersion-2.0.2.5116-informational?style=flat-square)
 
 Prowlarr is an indexer manager/proxy built on the popular *arr .net/reactjs base stack to integrate with your various PVR apps
 
@@ -15,13 +15,13 @@ Prowlarr is an indexer manager/proxy built on the popular *arr .net/reactjs base
 ## Source Code
 
 * <https://github.com/Prowlarr/Prowlarr>
-* <https://github.com/onedr0p/containers>
+* <https://github.com/home-operations/containers>
 
 ## Requirements
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts/ | common | 1.5.1 |
+| https://bjw-s-labs.github.io/helm-charts/ | common | 1.5.1 |
 
 ## Values
 
@@ -30,7 +30,7 @@ Prowlarr is an indexer manager/proxy built on the popular *arr .net/reactjs base
 | env | object | See below | environment variables. |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
-| image.repository | string | `"ghcr.io/onedr0p/prowlarr-develop"` | image repository |
+| image.repository | string | `"ghcr.io/home-operations/prowlarr"` | image repository |
 | image.tag | string | `nil` |  |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | metrics.enabled | bool | See values.yaml | Enable and configure Exportarr sidecar and Prometheus serviceMonitor. |
@@ -39,7 +39,7 @@ Prowlarr is an indexer manager/proxy built on the popular *arr .net/reactjs base
 | metrics.exporter.env.unknownQueueItems | bool | `false` | Set to true to enable gathering unknown queue items |
 | metrics.exporter.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | metrics.exporter.image.repository | string | `"ghcr.io/onedr0p/exportarr"` | image repository |
-| metrics.exporter.image.tag | string | `"v2.0.1"` | image tag |
+| metrics.exporter.image.tag | string | `"v2.3.0"` | image tag |
 | metrics.prometheusRule | object | See values.yaml | Enable and configure Prometheus Rules for the chart under this key. |
 | metrics.prometheusRule.rules | list | See prometheusrules.yaml | Configure additionial rules for the chart under this key. |
 | metrics.serviceMonitor.interval | string | `"3m"` |  |

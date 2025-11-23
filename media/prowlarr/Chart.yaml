@@ -3,10 +3,10 @@ annotations:
     - kind: changed
       description: use template to generate README.md
 apiVersion: v2
-appVersion: 1.25.2.4794
+appVersion: 2.0.2.5116
 dependencies:
 - name: common
-  repository: https://bjw-s.github.io/helm-charts/
+  repository: https://bjw-s-labs.github.io/helm-charts/
   version: 1.5.1
 description: Prowlarr is an indexer manager/proxy built on the popular *arr .net/reactjs
   base stack to integrate with your various PVR apps
@@ -23,6 +23,6 @@ maintainers:
 name: prowlarr
 sources:
 - https://github.com/Prowlarr/Prowlarr
-- https://github.com/onedr0p/containers
+- https://github.com/home-operations/containers
 type: application
-version: 1.40.0
+version: 1.49.1

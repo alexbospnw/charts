@@ -28,9 +28,9 @@ service:
       http:
         port: 8080
 
-securityContext:
-  runAsUser: 0
-  runAsGroup: 0
+#securityContext:
+#  runAsUser: 0
+#  runAsGroup: 0
 
 ingress:
   main:

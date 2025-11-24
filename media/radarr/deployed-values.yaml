@@ -5,8 +5,6 @@
 # https://github.com/bjw-s/helm-charts/tree/main/charts/library/common/values.yaml
 #
 
-image:
-
 # -- environment variables.
 # @default -- See below
 env:

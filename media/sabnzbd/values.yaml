@@ -21,7 +21,7 @@ env:
   PGID: 0
   # -- Set the container timezone
   TZ: PST
-  # HOST_WHITELIST_ENTRIES:
+  HOST_WHITELIST_ENTRIES: sabnzbd.greaterfaydark.net
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml

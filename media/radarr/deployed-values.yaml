@@ -70,6 +70,7 @@ securityContext:
 persistence:
   config:
     enabled: true
+    size: 5Gi
 
   media:
     enabled: true

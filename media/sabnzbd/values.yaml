@@ -17,8 +17,8 @@ image:
 # -- environment variables.
 # @default -- See below
 env:
-  PUID: 1000
-  PGID: 1000
+  PUID: 0
+  PGID: 0
   # -- Set the container timezone
   TZ: PST
   # HOST_WHITELIST_ENTRIES:
@@ -32,8 +32,8 @@ service:
         port: 8080
 
 securityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
+  runAsUser: 0
+  runAsGroup: 0
   fsGroup: 65534 # (Requires CSI support)
   fsGroupChangePolicy: OnRootMismatch # (Requires CSI support)
 

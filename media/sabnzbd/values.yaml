@@ -85,12 +85,6 @@ persistence:
     enabled: true
     accessMode: ReadWriteOnce
     size: 5Gi
-
-  media:
-    enabled: true
-    mountPath: /media
-    accessMode: ReadWriteOnce
-    size: 60Gi
   downloads:
     enabled: true
     mountPath: /media

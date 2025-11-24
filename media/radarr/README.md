@@ -1,6 +1,6 @@
 # radarr
 
-![Version: 1.14.0](https://img.shields.io/badge/Version-1.14.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 5.12.2.9335](https://img.shields.io/badge/AppVersion-5.12.2.9335-informational?style=flat-square)
+![Version: 1.24.1](https://img.shields.io/badge/Version-1.24.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 5.27.3.10153](https://img.shields.io/badge/AppVersion-5.27.3.10153-informational?style=flat-square)
 
 A fork of Sonarr to work with movies à la Couchpotato
 
@@ -15,13 +15,13 @@ A fork of Sonarr to work with movies à la Couchpotato
 ## Source Code
 
 * <https://github.com/Radarr/Radarr>
-* <https://github.com/onedr0p/containers>
+* <https://github.com/home-operations/containers>
 
 ## Requirements
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://bjw-s.github.io/helm-charts/ | common | 1.5.1 |
+| https://bjw-s-labs.github.io/helm-charts/ | common | 1.5.1 |
 
 ## Values
 
@@ -30,7 +30,7 @@ A fork of Sonarr to work with movies à la Couchpotato
 | env | object | See below | environment variables. |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
-| image.repository | string | `"ghcr.io/onedr0p/radarr"` | image repository |
+| image.repository | string | `"ghcr.io/home-operations/radarr"` | image repository |
 | image.tag | string | `nil` |  |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | metrics.enabled | bool | See values.yaml | Enable and configure Exportarr sidecar and Prometheus serviceMonitor. |
@@ -39,7 +39,7 @@ A fork of Sonarr to work with movies à la Couchpotato
 | metrics.exporter.env.unknownQueueItems | bool | `false` | Set to true to enable gathering unknown queue items |
 | metrics.exporter.image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | metrics.exporter.image.repository | string | `"ghcr.io/onedr0p/exportarr"` | image repository |
-| metrics.exporter.image.tag | string | `"v2.0.1"` | image tag |
+| metrics.exporter.image.tag | string | `"v2.3.0"` | image tag |
 | metrics.prometheusRule | object | See values.yaml | Enable and configure Prometheus Rules for the chart under this key. |
 | metrics.prometheusRule.rules | list | See prometheusrules.yaml | Configure additionial rules for the chart under this key. |
 | metrics.serviceMonitor.interval | string | `"3m"` |  |

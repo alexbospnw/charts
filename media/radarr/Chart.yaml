@@ -3,10 +3,10 @@ annotations:
     - kind: changed
       description: use template to generate README.md
 apiVersion: v2
-appVersion: 5.12.2.9335
+appVersion: 5.27.3.10153
 dependencies:
 - name: common
-  repository: https://bjw-s.github.io/helm-charts/
+  repository: https://bjw-s-labs.github.io/helm-charts/
   version: 1.5.1
 description: A fork of Sonarr to work with movies à la Couchpotato
 home: https://github.com/pree/helm-charts/tree/master/charts/radarr
@@ -22,6 +22,6 @@ maintainers:
 name: radarr
 sources:
 - https://github.com/Radarr/Radarr
-- https://github.com/onedr0p/containers
+- https://github.com/home-operations/containers
 type: application
-version: 1.14.0
+version: 1.24.1

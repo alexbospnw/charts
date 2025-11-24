@@ -9,7 +9,7 @@ image:
   # -- image repository
   repository: ghcr.io/home-operations/sabnzbd
   # -- image tag
-  tag: v3.3.1
+  tag: 4.5
 
   # -- image pull policy
   pullPolicy: IfNotPresent
@@ -29,7 +29,7 @@ service:
       http:
         port: 8080
 
-#securityContext:
+securityContext:
 #  runAsUser: 0
 #  runAsGroup: 0
 

@@ -35,7 +35,7 @@ securityContext:
 ingress:
   main:
     # -- Enables or disables the ingress
-    enabled: false
+    enabled: true
 
     # -- Make this the primary ingress (used in probes, notes, etc...).
     # If there is more than 1 ingress, make sure that only 1 ingress is marked as primary.

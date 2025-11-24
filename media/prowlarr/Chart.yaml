@@ -3,7 +3,7 @@ annotations:
     - kind: changed
       description: use template to generate README.md
 apiVersion: v2
-appVersion: 2.0.2.5116
+appVersion: 2.3.0.5236
 dependencies:
 - name: common
   repository: https://bjw-s-labs.github.io/helm-charts/

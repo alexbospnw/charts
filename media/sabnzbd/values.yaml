@@ -9,6 +9,7 @@ image:
   # -- image repository
   repository: ghcr.io/home-operations/sabnzbd
   # -- image tag
+  tag: v3.3.1
 
   # -- image pull policy
   pullPolicy: IfNotPresent

@@ -6,12 +6,6 @@
 #
 
 image:
-  # -- image repository
-  repository: ghcr.io/onedr0p/radarr
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
 
 # -- environment variables.
 # @default -- See below
